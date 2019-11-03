@@ -3,4 +3,5 @@
     <item name="football_image" type="id" />
     <item name="football_name" type="id" />
     <item name="recycle" type="id" />
+    <item name="footbal_description" type="id" />
 </resources>

@@ -1,11 +1,11 @@
-package com.fionicholas.footballleague
+package com.fionicholas.footballleague.activity
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.widget.LinearLayout
+import com.fionicholas.footballleague.R
 import com.fionicholas.footballleague.adapter.FootballAdapter
 import com.fionicholas.footballleague.model.Football
 import org.jetbrains.anko.*
@@ -19,7 +19,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
         linearLayout {
             lparams(width = matchParent, height = wrapContent)
@@ -29,17 +28,13 @@ class MainActivity : AppCompatActivity() {
             rv_football = recyclerView {
                 id = R.id.recycle
                 lparams(width = matchParent,  height = wrapContent)
-                layoutManager = GridLayoutManager(applicationContext, 2)
+                layoutManager = GridLayoutManager(this@MainActivity, 2)
             }
         }
 
         adapter = FootballAdapter(football){
-            startActivity<DetailActivity>(
-                "NAME" to it.name,
-                "IMAGE" to it.image,
-                "DESCRIPTION" to it.description,
-                "ID" to it.id
-            )
+            startActivity<DetailActivity>("DETAIL_FOOTBALL" to Football(it.name, it.id, it.description, it.image))
+            toast(it.name)
         }
         rv_football.adapter = adapter
         initData()
@@ -58,7 +53,6 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-        //Recycle the typed array
         image.recycle()
     }
 

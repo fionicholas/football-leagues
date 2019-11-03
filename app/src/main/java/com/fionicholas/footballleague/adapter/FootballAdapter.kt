@@ -1,5 +1,6 @@
 package com.fionicholas.footballleague.adapter
 
+import android.graphics.Color
 import android.graphics.Typeface
 import android.support.v7.widget.RecyclerView
 import android.view.Gravity
@@ -60,13 +61,15 @@ class FootballAdapter(private val result: List<Football>, private val listener: 
                         id = R.id.football_name
                         textSize = 16f
                         typeface = Typeface.DEFAULT_BOLD
+                        textColor = Color.BLACK
                         maxLines = 1
                         gravity = Gravity.CENTER
 
                     }.lparams {
                         width = matchParent
                     }
-                }}
+                }
+                }
                 }
             }
         }
